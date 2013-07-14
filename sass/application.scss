@@ -1,0 +1,18 @@
+.footer-actions {
+  width: 100%;
+  position: absolute;
+  bottom: 10%;
+}
+
+.btn-speak {
+  width: 64px;
+  height: 64px;
+  background: #f5f5f5 url('../images/microphone.png') no-repeat center center;
+  background-size: 70%;
+  text-indent: -999px;
+  border-radius: 100px;
+  box-shadow: 0 0px 1px 1px rgba(0,0,0,.2),
+              0 3px 1px rgba(0,0,0,.2);
+  display: block;
+  margin: 0 auto;
+}
