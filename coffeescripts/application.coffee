@@ -1,4 +1,5 @@
 $('.btn-speak').on 'click', (event) ->
+  $(@).toggleClass('active')
   event.preventDefault()
 
 $('.btn-speak').popover(
