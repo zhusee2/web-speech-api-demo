@@ -10,4 +10,12 @@ $('.btn-speak').popover(
 ) if !webkitSpeechRecognition?
 
 $(document).on 'submit', '.form-recognition', (event) ->
+  console.log command = $('#input-command').val()
+
+  if SpeechSynthesisUtterance?
+    u = new SpeechSynthesisUtterance(command)
+    u.lang = "zh-TW"
+
+    speechSynthesis.speak(u)
+
   event.preventDefault()
