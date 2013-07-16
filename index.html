@@ -8,17 +8,19 @@
 </head>
 <body>
   <div class="container-fluid">
-    <div class="response-block"></div>
-    <div class="footer-actions">
-      <a href="#" class="btn-speak">Speak</a>
-    </div>
-    <div class="hide fallback fallback-recognition">
-      <form action="#" class="form-recognition">
-        <p>Sorry, Your browser does not support Speech Recognition.</p>
-        <p>Please input your words instead:</p>
+    <div id="voice-assistant">
+      <div class="response-block"></div>
+      <div class="footer-actions">
+        <a href="#" id="btn-speak" class="btn-speak">Speak</a>
+      </div>
+      <div class="hide fallback fallback-recognition">
+        <form action="#" class="form-recognition">
+          <p>Sorry, Your browser does not support Speech Recognition.</p>
+          <p>Please input your words instead:</p>
 
-        <input type="text" id="input-command" class="input-fallback input-block-level input-command" placeholder="Input and press Enter here" />
-      </form>
+          <input type="text" id="input-command" class="input-fallback input-block-level input-command" placeholder="Input and press Enter here" />
+        </form>
+      </div>
     </div>
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
