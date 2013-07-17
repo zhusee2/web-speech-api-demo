@@ -1,5 +1,28 @@
+@-webkit-keyframes drift-up {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+
 body {
   background: #eee;
+}
+
+.response-block {
+  margin-top: 10%;
+}
+
+.response {
+  font-size: 26px;
+  line-height: 1.5;
+  text-align: center;
+  -webkit-animation: drift-up 650ms cubic-bezier(.13,.67,.02,1.1);
 }
 
 .popover form {
