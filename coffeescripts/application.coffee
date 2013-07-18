@@ -16,7 +16,9 @@ class VoiceAssistant extends BaseClass
     @fallbacks = {
       recognition: @container.find('.fallback-recognition')
     }
+    @responceBlock = @container.find('.responce-block')
     @speakButton = new VoiceAssistant.SpeakButton @container.find('#btn-speak'), @
+    @commandProcessor = new VoiceAssistant.CommandProcessor @
 
     @init()
 
@@ -61,6 +63,18 @@ class VoiceAssistant.SpeakButton extends BaseClass
     @container.toggleClass('active')
 
 
+class VoiceAssistant.CommandProcessor extends BaseClass
+  constructor: (@assistant) ->
+    super
+
+  process: (commandText) ->
+    if commandText.match(/書/)
+      @respondToBook()
+
+  respondToBook: ->
+    @assistant.addResponse(
+      text: "好的，正在尋找暢銷書籍⋯⋯"
+    )
 
 class VoiceAssistant.Response
   constructor: (@responseObject) ->
