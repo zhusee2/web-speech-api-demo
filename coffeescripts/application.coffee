@@ -37,6 +37,10 @@ class VoiceAssistant extends BaseClass
 
       event.preventDefault()
 
+  addResponse: (responseObj) ->
+    response = new VoiceAssistant.Response(responseObj)
+    @responceBlock.append response.toDOM()
+
 class VoiceAssistant.SpeakButton extends BaseClass
   constructor: (@container, @assistant) ->
     super
@@ -95,6 +99,9 @@ class VoiceAssistant.Response
 
   appendImage: (imageSrc) ->
     @container.append $('<img>').attr('src', imageSrc)
+
+  toDOM: ->
+    @container.clone()
 
 $ ->
   window.va = new VoiceAssistant('#voice-assistant')
