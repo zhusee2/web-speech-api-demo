@@ -16,7 +16,7 @@ class VoiceAssistant extends BaseClass
     @fallbacks = {
       recognition: @container.find('.fallback-recognition')
     }
-    @responceBlock = @container.find('.responce-block')
+    @responseBlock = @container.find('.response-block')
     @speakButton = new VoiceAssistant.SpeakButton @container.find('#btn-speak'), @
     @commandProcessor = new VoiceAssistant.CommandProcessor @
 
@@ -26,20 +26,16 @@ class VoiceAssistant extends BaseClass
     @bindEvents()
 
   bindEvents: ->
-    @container.on 'submit', '.popover .form-recognition', (event) ->
-      command = $('#input-command').val()
-
-      if SpeechSynthesisUtterance?
-        u = new SpeechSynthesisUtterance(command)
-        u.lang = "zh-TW"
-
-        speechSynthesis.speak(u)
-
+    @container.on 'submit', '.popover .form-recognition', (event) =>
       event.preventDefault()
+
+      command = $('#input-command').val()
+      @commandProcessor.process(command)
+
 
   addResponse: (responseObj) ->
     response = new VoiceAssistant.Response(responseObj)
-    @responceBlock.append response.toDOM()
+    @responseBlock.append response.toDOM()
 
 class VoiceAssistant.SpeakButton extends BaseClass
   constructor: (@container, @assistant) ->
@@ -86,16 +82,17 @@ class VoiceAssistant.Response
     @init()
 
   init: ->
-    @addResponse()
+    @appendResponse()
 
   appendResponse: ->
     for type, content of @responseObject
       switch type
         when "text" then @appendText(content)
+        when "hiddenText" then @appendText(content, "hide")
         when "image" then @appendImage(content)
 
-  appendText: (textContent) ->
-    @container.append $('<p>').text(textContent)
+  appendText: (textContent, className = "") ->
+    @container.append $('<p>').addClass(className).text(textContent)
 
   appendImage: (imageSrc) ->
     @container.append $('<img>').attr('src', imageSrc)
