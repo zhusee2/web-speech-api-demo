@@ -61,5 +61,26 @@ class VoiceAssistant.SpeakButton extends BaseClass
     @container.toggleClass('active')
 
 
+
+class VoiceAssistant.Response
+  constructor: (@responseObject) ->
+    @container = $('<div>').addClass('response')
+    @init()
+
+  init: ->
+    @addResponse()
+
+  appendResponse: ->
+    for type, content of @responseObject
+      switch type
+        when "text" then @appendText(content)
+        when "image" then @appendImage(content)
+
+  appendText: (textContent) ->
+    @container.append $('<p>').text(textContent)
+
+  appendImage: (imageSrc) ->
+    @container.append $('<img>').attr('src', imageSrc)
+
 $ ->
   window.va = new VoiceAssistant('#voice-assistant')
