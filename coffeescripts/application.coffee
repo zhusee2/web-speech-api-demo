@@ -75,6 +75,10 @@ class VoiceAssistant.CommandProcessor extends BaseClass
     @assistant.addResponse(
       text: "好的，正在尋找暢銷書籍⋯⋯"
     )
+    @assistant.addResponse(
+      hiddenText: "我找到了一本好書：丹董的《越吃越享瘦 丹董的爆食減肥法：你不可不吃的 150 家高檔餐廳》。今天有簽書會，要參加嗎？",
+      image: "images/cover.jpg"
+    )
 
 class VoiceAssistant.Response
   constructor: (@responseObject) ->
