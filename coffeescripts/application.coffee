@@ -8,6 +8,11 @@ class BaseClass
 
   bindEvents: ->
 
+VA = {
+  debug: true
+  log: ->
+    console.log arguments if VA.debug
+}
 
 class VoiceAssistant extends BaseClass
   constructor: (@container) ->
