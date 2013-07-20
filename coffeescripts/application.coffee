@@ -102,6 +102,9 @@ class VoiceAssistant.SpeakButton extends BaseClass
   toggleActive: ->
     @container.toggleClass('active')
 
+  hidePopover: ->
+    @container.popover('hide')
+
 
 class VoiceAssistant.CommandProcessor extends BaseClass
   constructor: (@assistant) ->
