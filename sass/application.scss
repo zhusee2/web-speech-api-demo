@@ -16,6 +16,11 @@ body {
 
 .response-block {
   margin-top: 10%;
+
+  img {
+    max-height: 75%;
+    -webkit-transform: translateY(-15%);
+  }
 }
 
 .response {
