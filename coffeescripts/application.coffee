@@ -24,6 +24,8 @@ class VoiceAssistant extends BaseClass
     @responseBlock = @container.find('.response-block')
     @speakButton = new VoiceAssistant.SpeakButton @container.find('#btn-speak'), @
     @commandProcessor = new VoiceAssistant.CommandProcessor @
+    @responseQueue = []
+    @speaking = -> window.speechSynthesis.speaking
 
     @init()
 
@@ -33,14 +35,47 @@ class VoiceAssistant extends BaseClass
   bindEvents: ->
     @container.on 'submit', '.popover .form-recognition', (event) =>
       event.preventDefault()
+      VA.log('Form submitted.')
 
       command = $('#input-command').val()
       @commandProcessor.process(command)
+      @speakButton.hidePopover()
 
 
   addResponse: (responseObj) ->
     response = new VoiceAssistant.Response(responseObj)
-    @responseBlock.append response.toDOM()
+    @responseQueue.push response
+
+    @playResponse() if not @speaking()
+
+  playResponse: ->
+    if @responseQueue.length > 0
+      VA.log 'Ready to play response.'
+
+      response = @responseQueue.shift()
+      responseDOM = response.toDOM()
+
+      @responseBlock.empty()
+      @responseBlock.append(responseDOM)
+
+      @speakResponse $(responseDOM).text()
+
+  speakResponse: (responseText) ->
+    VA.log("Speak requested: #{responseText}")
+
+    u = new SpeechSynthesisUtterance(responseText)
+    u.lang = "zh-TW"
+
+    u.onend = (event) =>
+      VA.log 'Utterance Ended.', event
+      @playResponse()
+
+    # Workaround for that SpeechSynthesisEvent will not be fired if it's
+    # never logged to console in WebKit Nightly (since r152754.)
+    console.log u if console?
+
+    window.speechSynthesis.speak(u)
+
 
 class VoiceAssistant.SpeakButton extends BaseClass
   constructor: (@container, @assistant) ->
