@@ -28,6 +28,10 @@ body {
   line-height: 1.5;
   text-align: center;
   -webkit-animation: drift-up 650ms cubic-bezier(.13,.67,.02,1.1);
+
+  code {
+    font-size: 22px;
+  }
 }
 
 .popover form {

@@ -25,12 +25,19 @@ class VoiceAssistant extends BaseClass
     @speakButton = new VoiceAssistant.SpeakButton @container.find('#btn-speak'), @
     @commandProcessor = new VoiceAssistant.CommandProcessor @
     @responseQueue = []
-    @speaking = -> window.speechSynthesis.speaking
+    @speaking = ->
+      if window.speechSynthesis?
+        window.speechSynthesis.speaking
+      else
+        false
 
     @init()
 
   init: ->
-    @bindEvents()
+    if window.speechSynthesis?
+      @bindEvents()
+    else
+      @displayFallbackMsg()
 
   bindEvents: ->
     @container.on 'submit', '.popover .form-recognition', (event) =>
@@ -76,6 +83,9 @@ class VoiceAssistant extends BaseClass
 
     window.speechSynthesis.speak(u)
 
+  displayFallbackMsg: ->
+    @responseBlock.find('.fallback-synthesis').removeClass('hide')
+
 
 class VoiceAssistant.SpeakButton extends BaseClass
   constructor: (@container, @assistant) ->
@@ -83,7 +93,7 @@ class VoiceAssistant.SpeakButton extends BaseClass
     @init()
 
   init: ->
-    @initPopover()
+    @initPopover() if window.speechSynthesis?
     @bindEvents()
 
   initPopover: ->
@@ -96,7 +106,7 @@ class VoiceAssistant.SpeakButton extends BaseClass
 
   bindEvents: ->
     @container.on 'click', (event) =>
-      @toggleActive()
+      @toggleActive() if window.speechSynthesis?
       event.preventDefault()
 
   toggleActive: ->
