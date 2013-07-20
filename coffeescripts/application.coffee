@@ -1,3 +1,8 @@
+window.VA = {
+  debug: false
+  log: -> console.log arguments if VA.debug
+}
+
 class BaseClass
   constructor: (@container) ->
     @container = $(@container)
@@ -7,12 +12,6 @@ class BaseClass
     @bindEvents()
 
   bindEvents: ->
-
-VA = {
-  debug: true
-  log: ->
-    console.log arguments if VA.debug
-}
 
 class VoiceAssistant extends BaseClass
   constructor: (@container) ->
@@ -158,4 +157,4 @@ class VoiceAssistant.Response
     @container.clone()
 
 $ ->
-  window.va = new VoiceAssistant('#voice-assistant')
+  VA.instance = new VoiceAssistant('#voice-assistant')
