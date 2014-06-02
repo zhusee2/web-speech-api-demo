@@ -1,0 +1,78 @@
+@-webkit-keyframes drift-up {
+  /* line 2, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(500px); }
+
+  /* line 6, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0); } }
+
+/* line 13, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+body {
+  background: #eee; }
+
+/* line 17, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+.container-fluid {
+  padding-left: 60px;
+  padding-right: 60px; }
+
+/* line 22, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+.response-block {
+  margin-top: 10%; }
+  /* line 25, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+  .response-block img {
+    max-height: 75%;
+    -webkit-transform: translateY(-15%); }
+
+/* line 31, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+.response {
+  font-size: 26px;
+  line-height: 1.5;
+  text-align: center;
+  -webkit-animation: drift-up 650ms cubic-bezier(0.13, 0.67, 0.02, 1.1); }
+  /* line 37, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+  .response code {
+    font-size: 22px; }
+
+/* line 42, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+.popover form {
+  margin-bottom: 0; }
+
+/* line 46, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+.footer-actions {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 10%; }
+
+/* line 53, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+.btn-speak {
+  width: 64px;
+  height: 64px;
+  background: #f7f7f7 url("/images/microphone.png") no-repeat center center;
+  background-size: 70%;
+  text-indent: -999px;
+  border-radius: 100px;
+  box-shadow: 0 0px 1px 1px rgba(0, 0, 0, 0.2), 0 3px 1px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto; }
+  /* line 65, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+  .btn-speak:hover {
+    box-shadow: 0 0px 1px 1px rgba(0, 0, 0, 0.2), 0 4px 1px rgba(0, 0, 0, 0.2); }
+  /* line 69, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+  .btn-speak:active {
+    background-color: #eaeaea;
+    box-shadow: 0 0px 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(0, 0, 0, 0.2); }
+  /* line 75, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+  .btn-speak.active {
+    box-shadow: 0 0px 1px 1px rgba(255, 0, 0, 0.5), inset 0 0px 1px 1px rgba(255, 0, 0, 0.5), 0 4px 1px rgba(0, 0, 0, 0.2); }
+
+/* line 82, /Users/zhusee2/Documents/Projects/web-speech-api-demo/source/stylesheets/voice_assistant.scss */
+footer {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 2%; }
