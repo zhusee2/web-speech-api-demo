@@ -53,7 +53,7 @@ body {
 .btn-speak {
   width: 64px;
   height: 64px;
-  background: darken(white, 3%) url('../images/microphone.png') no-repeat center center;
+  background: darken(white, 3%) image-url('microphone.png') no-repeat center center;
   background-size: 70%;
   text-indent: -999px;
   border-radius: 100px;

@@ -1,10 +1,20 @@
 ---
-title: Welcome to Middleman
+title: WebSpeech API Demo by @zhusee2
 ---
 
-<div class="welcome">
-  <h1>Middleman is Watching</h1>
-  <p class="doc">
-    <%= link_to "Read Online Documentation", "http://middlemanapp.com/" %>
-  </p><!-- .doc -->
-</div><!-- .welcome -->
+<div id="voice-assistant">
+  <div class="response-block">
+    <%= partial "fallback_notice" %>
+  </div>
+  <div class="footer-actions">
+    <a href="#" id="btn-speak" class="btn-speak">Speak</a>
+  </div>
+  <div class="hide fallback fallback-recognition">
+    <form action="#" class="form-recognition">
+      <p>Sorry, your browser does not support Speech Recognition.</p>
+      <p>Please input your words instead:</p>
+
+      <input type="text" id="input-command" class="input-fallback input-block-level input-command" placeholder="Input and press Enter here" value="請推薦我一本好書" autofocus />
+    </form>
+  </div>
+</div>

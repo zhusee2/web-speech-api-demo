@@ -1,1 +1,1 @@
-//= require_tree .
+//= require voice_assistant
